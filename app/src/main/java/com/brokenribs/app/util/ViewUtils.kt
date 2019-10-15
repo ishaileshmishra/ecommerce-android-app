@@ -18,5 +18,5 @@ fun ProgressBar.show(){
 
 
 fun ProgressBar.hide(){
-    visibility = View.GONE
+    visibility = View.INVISIBLE
 }

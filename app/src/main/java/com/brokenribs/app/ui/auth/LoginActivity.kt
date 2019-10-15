@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() , AuthListener{
 
     override fun onSuccess(user: User) {
         toast("${user.name} logged In")
+        progressBar.hide()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
