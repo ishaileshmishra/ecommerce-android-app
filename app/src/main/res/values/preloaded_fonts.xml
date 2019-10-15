@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/allerta_stencil</item>
+        <item>@font/amita_bold</item>
+        <item>@font/cabin_sketch_bold</item>
+    </array>
+</resources>
