@@ -4,14 +4,22 @@ import androidx.lifecycle.ViewModel
 import com.brokenribs.app.data.repositories.UserRepository
 import com.brokenribs.app.util.APIException
 import com.brokenribs.app.util.Coroutines
+import com.brokenribs.app.util.NoInternetException
 
 
-class LoginViewModel: ViewModel() {
+class LoginViewModel(
+
+    // constructor injection
+    private val repository: UserRepository
+
+): ViewModel() {
 
 
     var emailAddress: String? = null
     var password: String? = null
     var authListener: AuthListener? = null
+
+    fun getLoggedInUser() = repository.getUser()
 
 
     fun onLoginClick(view: View){
@@ -24,14 +32,17 @@ class LoginViewModel: ViewModel() {
 
         Coroutines.main {
             try {
-                val loginResponse = UserRepository().userLogin(emailAddress!!, password!!)
+                val loginResponse = repository.userLogin(emailAddress!!, password!!)
                 loginResponse.user?.let {
                     authListener?.onSuccess(it)
+                    repository.saveUser(it)
                     return@main
                 }
 
                 authListener?.onFailure(loginResponse.message!!)
             }catch (e: APIException){
+                authListener?.onFailure("Error code ${e.message!!}")
+            }catch (e: NoInternetException){
                 authListener?.onFailure("Error code ${e.message!!}")
             }
 

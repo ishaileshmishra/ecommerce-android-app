@@ -8,11 +8,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.brokenribs.app.R
+import com.brokenribs.app.data.db.AppDatabase
 import com.brokenribs.app.data.db.entities.User
+import com.brokenribs.app.data.network.BrokenAPI
+import com.brokenribs.app.data.network.NetworkConnectionInterceptor
+import com.brokenribs.app.data.repositories.UserRepository
 import com.brokenribs.app.databinding.ActivityLoginBinding
 import com.brokenribs.app.ui.home.HomeActivity
 import com.brokenribs.app.util.hide
 import com.brokenribs.app.util.show
+import com.brokenribs.app.util.snackbar
 import com.brokenribs.app.util.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,10 +27,27 @@ class LoginActivity : AppCompatActivity() , AuthListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
+        val api = BrokenAPI(networkConnectionInterceptor)
+        val db = AppDatabase(this)
+        val repository =  UserRepository(api, db)
+        val factory = AuthViewModelFactory(repository)
+
         val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
         binding.viewmodel = viewModel
         viewModel.authListener = this
+
+        viewModel.getLoggedInUser().observe(this, Observer { user ->
+
+            if (user!=null){
+                Intent(this, HomeActivity::class.java).also {
+                    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(it)
+                }
+
+            }
+        })
 
     }
 
@@ -35,16 +57,13 @@ class LoginActivity : AppCompatActivity() , AuthListener{
     }
 
     override fun onSuccess(user: User) {
-        toast("${user.name} logged In")
+        root_layout.snackbar("${user.name} logged In")
         progressBar.hide()
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 
     override fun onFailure(message: String) {
         progressBar.hide()
-        toast("Login Failed")
+        root_layout.snackbar(message)
     }
 
     override fun onSignupBtnTap() {

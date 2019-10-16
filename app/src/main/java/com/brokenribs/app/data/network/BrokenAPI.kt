@@ -1,8 +1,7 @@
 package com.brokenribs.app.data.network
 
 import com.brokenribs.app.data.network.reponse.AuthResponse
-import okhttp3.ResponseBody
-import retrofit2.Call
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,10 +21,19 @@ interface BrokenAPI {
 
 
     companion object{
-        operator fun invoke(): BrokenAPI {
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor
+        ): BrokenAPI {
+
+            val  okHttpClient = OkHttpClient.Builder().addInterceptor(networkConnectionInterceptor).build()
             val urlBase = "https://api.simplifiedcoding.in/course-apis/mvvm/"
-            return  Retrofit.Builder().baseUrl(urlBase).addConverterFactory(GsonConverterFactory.create()).build().create(
-                BrokenAPI::class.java)
+
+            return  Retrofit.Builder()
+                .client(okHttpClient)
+                .baseUrl(urlBase)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(BrokenAPI::class.java)
         }
     }
 }
