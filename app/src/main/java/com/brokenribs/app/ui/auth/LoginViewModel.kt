@@ -1,4 +1,5 @@
 package com.brokenribs.app.ui.auth
+import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.brokenribs.app.data.repositories.UserRepository
@@ -9,11 +10,9 @@ import com.brokenribs.app.util.NoInternetException
 
 class LoginViewModel(
 
-    // constructor injection
     private val repository: UserRepository
 
 ): ViewModel() {
-
 
     var emailAddress: String? = null
     var password: String? = null
@@ -52,7 +51,8 @@ class LoginViewModel(
 
 
     fun onSignupClick(view: View){
-        authListener?.onSignupBtnTap()
+        view.context.startActivity(Intent(view.context, SignUpActivity::class.java))
+        //authListener?.onSignupBtnTap()
     }
 
 }

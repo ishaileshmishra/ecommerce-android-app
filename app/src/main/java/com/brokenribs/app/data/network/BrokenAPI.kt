@@ -20,14 +20,23 @@ interface BrokenAPI {
     ): Response<AuthResponse>
 
 
+    @FormUrlEncoded
+    @POST("signup")
+    suspend fun userSignup(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Response<AuthResponse>
+
+
+
     companion object{
+
         operator fun invoke(
             networkConnectionInterceptor: NetworkConnectionInterceptor
         ): BrokenAPI {
-
             val  okHttpClient = OkHttpClient.Builder().addInterceptor(networkConnectionInterceptor).build()
             val urlBase = "https://api.simplifiedcoding.in/course-apis/mvvm/"
-
             return  Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(urlBase)

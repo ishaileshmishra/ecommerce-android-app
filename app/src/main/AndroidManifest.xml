@@ -13,6 +13,7 @@
         android:roundIcon="@drawable/ic_shopping_basket_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:name=".BrokenbricksApp"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.auth.SignUpActivity"/>
         <activity android:name=".ui.auth.LoginActivity" />
