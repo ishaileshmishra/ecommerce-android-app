@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="8dp"
-    android:layout_margin="8dp"
-    android:padding="8dp">
+    android:layout_margin="4dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -15,7 +13,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/productIcon"
             android:layout_width="match_parent"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             android:layout_height="150sp">
 
         </androidx.appcompat.widget.AppCompatImageView>

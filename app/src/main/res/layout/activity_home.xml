@@ -23,16 +23,34 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            app:title="@string/app_name"
-            app:titleMarginStart="8dp" />
+            android:background="@color/colorPrimaryDark"
+            android:animateLayoutChanges="true">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:fontFamily="cursive"
+                android:textColor="@android:color/white"
+                android:text="@string/app_name"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:tabGravity="fill"
-            app:tabMode="auto" />
+            android:contextClickable="true"
+            android:isScrollContainer="true"
+            android:tooltipText="Select Categories"
+            app:tabTextColor="@android:color/holo_orange_dark"
+            app:tabSelectedTextColor="@android:color/white"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="15dp"
+            app:tabMode="scrollable" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"

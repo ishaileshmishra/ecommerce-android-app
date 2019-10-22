@@ -7,9 +7,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import com.google.android.material.snackbar.Snackbar
 
-/*fun Context.toast(message: String){
+fun Context.toast(message: String){
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-}*/
+}
 
 
 fun View.snackbar(message: String){

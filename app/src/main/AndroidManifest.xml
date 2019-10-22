@@ -4,20 +4,24 @@
     package="com.brokenribs.app">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BrokenbricksApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_shopping_basket_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".BrokenbricksApp"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.auth.SignUpActivity"/>
+        <activity
+            android:name=".ui.details.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.auth.SignUpActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
-        <activity android:name=".ui.home.HomeActivity"/>
+        <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,4 +34,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>

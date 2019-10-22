@@ -1,31 +1,26 @@
 package com.brokenribs.app.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.brokenribs.app.R
-import kotlin.math.log
+import com.brokenribs.app.util.ImagesUtils
 
 class ContainerFragment : Fragment() {
 
     private lateinit var adapter: ContainerAdapter
+    private lateinit var sectionAdapter: SectionAdapter
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val name = arguments?.getString(SECTION)
-    }
+    private val products: MutableList<Products> = ArrayList()
 
 
     companion object {
+
         val SECTION: String = "section"
 
         @JvmStatic
@@ -42,33 +37,56 @@ class ContainerFragment : Fragment() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.container_frament, container, false)
+    override fun onCreateView(
 
-        val ARG_PAGE_SECTION = arguments?.getString(SECTION)
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?): View?
+    {
+        val view:View = inflater.inflate(R.layout.container_frament, container, false)
+        val page_section = arguments?.getString(SECTION)
 
-        val items = listOf(
-            Products("Titen watch", "https://pbs.twimg.com/media/DlOPkMdXoAYwqRv.jpg"),
-            Products("indistin Waber", "https://i.pinimg.com/474x/d4/f7/90/d4f790d479fcd9f79ba149efd36a1892.jpg"),
-            Products("Content 01", "https://assets.vogue.com/photos/5c9e5a92991e7d2e51c59725/master/pass/00-promo-short-suits.jpg"),
-            Products("Content 02", "https://assets.vogue.com/photos/5c9e5a93198a7c2e6e397a4f/master/w_1600%2Cc_limit/02-short-suits.jpg"),
-            Products("Content 03", "hhttps://vickvanlian.com/wp-content/uploads/2019/03/short-and-sassy-hairstyles-super-best-pin-by-beth-hanson-on-hair-pinterest.jpg"),
-            Products("Content 04", "https://i.pinimg.com/originals/80/15/bb/8015bb2af5dc6d480a3d14093eb212c9.jpg"),
-            Products("Content 05", "https://i.pinimg.com/originals/18/da/81/18da817edb575645c96db8a858818ca7.jpg")
-        )
-
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
-        layoutManager = GridLayoutManager(context, 2)
-        recyclerView.layoutManager = layoutManager
-
-        adapter = ContainerAdapter(items)
-        adapter.replaceItems(items)
-        recyclerView.adapter = adapter
+        loadTopSections(view)
+        if (page_section != null) {
+            loadProducts(view, page_section)
+        }
 
         return view
     }
 
 
+    private fun loadTopSections(view: View){
+
+        val sections: Array<String> = ImagesUtils.offers.getOffersUrls()
+        val recyclerViewSection = view?.findViewById<RecyclerView>(R.id.rv_top_sections)
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewSection?.layoutManager = layoutManager
+        recyclerViewSection?.setHasFixedSize(true)
+
+        sectionAdapter = SectionAdapter(sections)
+        sectionAdapter.replaceItems(sections)
+        recyclerViewSection?.adapter = sectionAdapter
+
+    }
+
+
+
+    private fun loadProducts(view: View, page_section: String){
+
+        val images: Array<String> = ImagesUtils.getImageUrls.getImageUrls()
+        for (x in 1 until images.size){ products.add(Products("$page_section $x", images.get(x))) }
+        val recyclerViewProducts = view?.findViewById<RecyclerView>(R.id.recycler_view)
+        layoutManager = GridLayoutManager(context, 2)
+        recyclerViewProducts?.layoutManager = layoutManager
+
+        //resuffle list item
+        products.shuffle()
+
+        adapter = ContainerAdapter(products)
+        adapter.replaceItems(products)
+        recyclerViewProducts?.adapter = adapter
+
+    }
 
 }
+

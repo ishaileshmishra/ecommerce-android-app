@@ -14,8 +14,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        //val viewModel = ViewModelProviders.of(this, factory).get(HomeViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         setupViewPager()
 
     }
@@ -23,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupViewPager() {
 
         val adapter = HomeFragmentPagerAdapter(supportFragmentManager)
-        val container = listOf("Fashion", "Home", "Mobile", "Electronics", "Beauty", "Appliances", "Toy & Baby", "More")
+        val container = listOf("Shop", "Imported chocolates", "Classic Watches", "Footwear", "Luxury wateches")
         for (item in container) {
             val itemFrame: ContainerFragment = ContainerFragment.newInstance(item)
             adapter.addFragment(itemFrame, item)
