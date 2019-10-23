@@ -16,8 +16,7 @@ class ContainerAdapter (private var items: List<Products> ) : RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
-        return ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.product_item_layout, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.product_item_layout, parent, false))
     }
 
     override fun getItemCount(): Int { return items.size }
@@ -27,19 +26,16 @@ class ContainerAdapter (private var items: List<Products> ) : RecyclerView.Adapt
         holder.chapterName.text = item.title
 
         Glide.with(holder.itemView.context)//.asGif()
-            .load(item.uriSource)
-            //.apply(RequestOptions.circleCropTransform())
+            .load(item.uriSource) //.apply(RequestOptions.circleCropTransform())
             .into(holder.productIcon)
 
-        //holder.productIcon.setImageDrawable(R.drawable.ic_shopping_basket_icon)//(item.uriSource)
         holder.itemView.setOnClickListener {
-            //Toast.makeText(holder.itemView.context, item.title, Toast.LENGTH_LONG).show()
+
             holder.itemView.snackbar("${item.title} tapped")
-
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("item", item.uriSource)
+            intent.putExtra("title", item.title)
+            intent.putExtra("uriSource", item.uriSource)
             holder.itemView.context.startActivity(intent)
-
         }
     }
 

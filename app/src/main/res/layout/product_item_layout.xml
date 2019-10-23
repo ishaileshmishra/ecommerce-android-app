@@ -13,8 +13,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/productIcon"
             android:layout_width="match_parent"
-            android:scaleType="fitXY"
-            android:layout_height="150sp">
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_height="120sp">
 
         </androidx.appcompat.widget.AppCompatImageView>
 
@@ -22,7 +23,7 @@
             android:id="@+id/tvChapterName"
             android:text="@string/app_name"
             android:textAppearance="?android:textAppearanceSmall"
-            android:padding="10sp"
+            android:paddingLeft="15dp"
             android:singleLine="true"
             android:background="#20808080"
             android:layout_width="match_parent"

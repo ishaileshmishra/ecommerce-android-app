@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.brokenribs.app.R
 import com.brokenribs.app.util.ImagesUtils
+import android.content.res.Configuration
+
 
 class ContainerFragment : Fragment() {
 
@@ -51,6 +53,7 @@ class ContainerFragment : Fragment() {
             loadProducts(view, page_section)
         }
 
+
         return view
     }
 
@@ -76,7 +79,15 @@ class ContainerFragment : Fragment() {
         val images: Array<String> = ImagesUtils.getImageUrls.getImageUrls()
         for (x in 1 until images.size){ products.add(Products("$page_section $x", images.get(x))) }
         val recyclerViewProducts = view?.findViewById<RecyclerView>(R.id.recycler_view)
-        layoutManager = GridLayoutManager(context, 2)
+
+        val orientation = resources.configuration.orientation
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            layoutManager = GridLayoutManager(context, 5)
+        } else {
+            layoutManager = GridLayoutManager(context, 2)
+        }
+
+        //layoutManager = GridLayoutManager(context, 2)
         recyclerViewProducts?.layoutManager = layoutManager
 
         //resuffle list item
