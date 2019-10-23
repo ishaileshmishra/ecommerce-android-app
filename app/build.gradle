@@ -21,9 +21,17 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug {
+            buildConfigField "String", "AUTH_KEY", "\"Authorization\""
+            buildConfigField "String", "AUTH", "\"563492ad6f91700001000001466190131bcc4dc182d0d9332def2308\""
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "AUTH_KEY", "\"Authorization\""
+            buildConfigField "String", "AUTH", "\"563492ad6f91700001000001466190131bcc4dc182d0d9332def2308\""
         }
     }
 

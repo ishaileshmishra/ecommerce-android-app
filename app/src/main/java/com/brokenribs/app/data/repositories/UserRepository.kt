@@ -6,6 +6,7 @@ import com.brokenribs.app.data.network.BrokenAPI
 import com.brokenribs.app.data.network.NetworkConnectionInterceptor
 import com.brokenribs.app.data.network.SafeApiRequest
 import com.brokenribs.app.data.network.reponse.AuthResponse
+import com.brokenribs.app.data.network.reponse.CuratedResponse
 import retrofit2.Response
 
 class UserRepository(
@@ -21,6 +22,10 @@ class UserRepository(
 
     suspend fun userSignup(name: String, email: String, password: String) : AuthResponse{
         return apiRequest { (api.userSignup(name, email, password))}
+    }
+
+    suspend fun photos(per_page: Int, page: Int) : CuratedResponse{
+        return apiRequest { (api.photos(per_page, page))}
     }
 
     suspend fun saveUser(user: User) = db.getUserDao().upsert(user)

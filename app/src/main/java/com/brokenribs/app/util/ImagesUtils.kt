@@ -10,7 +10,7 @@ class ImagesUtils {
 
             return arrayOf(
                 "https://static.pexels.com/photos/5854/sea-woman-legs-water-medium.jpg",
-                "https://static.pexels.com/photos/6245/kitchen-cooking-interior-decor-medium.jpg",
+                "https://images.news18.com/ibnlive/uploads/2019/07/Vikram.jpg",
                 "https://images.pexels.com/photos/3112008/pexels-photo-3112008.jpeg",
                 "https://static.pexels.com/photos/6041/nature-grain-moving-cereal-medium.jpg",
                 "https://static.pexels.com/photos/7116/mountains-water-trees-lake-medium.jpg",
