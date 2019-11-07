@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,37 +13,15 @@
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="Hi This is the sample title"/>
+        <include layout="@layout/products_img_layout" />
+        <include layout="@layout/rewords_layout" />
+        <include layout="@layout/product_description_layout" />
+        <include layout="@layout/product_details_only" />
+        <include layout="@layout/layout_ratings" />
 
-        <TextView
-            android:id="@+id/txtPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textStyle="bold"
-            android:text="Price: $890"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="3.5 *"/>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/large_text"/>
 
     </LinearLayout>
 

@@ -5,4 +5,6 @@
     <color name="colorAccent">#A6174D</color>
     <color name="colorSelect">#FFE174</color>
     <color name="colorText">#F4F2F3</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
 </resources>

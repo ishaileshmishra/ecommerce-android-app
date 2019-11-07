@@ -18,14 +18,13 @@
         <activity
             android:name=".ui.details.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.auth.SignUpActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

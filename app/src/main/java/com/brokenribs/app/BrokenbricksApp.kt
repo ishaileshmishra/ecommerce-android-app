@@ -31,5 +31,4 @@ class BrokenbricksApp : Application(), KodeinAware {
     }
 
 
-
 }

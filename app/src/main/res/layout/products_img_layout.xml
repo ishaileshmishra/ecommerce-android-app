@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="3dp"
+    android:background="@android:color/white"
+    android:id="@+id/product_imges_vp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/productImagesViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/img_page_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/view_pager_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tabBackground="@drawable/selector_dot"
+        app:tabIndicatorHeight="0dp"
+        app:tabRippleColor="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImagesViewPager"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingWishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        app:rippleColor="@color/colorPrimary"
+        android:tint="#9E9999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_love"
+        tools:ignore="VectorDrawableCompat"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/elijah_o_donnell"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager_indicator" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:background="@drawable/corner_round_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
+
+        <TextView
+            android:id="@+id/txtRatingMiniView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:text="@string/_4_5"/>
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_gravity="center"
+            android:tint="@color/colorWhite"
+            android:src="@drawable/ic_star"
+            android:layout_marginStart="2dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewMiniRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Total Ratings"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linear_layout"
+        app:layout_constraintStart_toEndOf="@+id/linear_layout"
+        app:layout_constraintTop_toTopOf="@+id/linear_layout"/>
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Rs.4999/-"
+        android:textSize="24dp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout" />
+
+    <TextView
+        android:id="@+id/textViewCrossed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Rs.7999/-"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
+        app:layout_constraintStart_toEndOf="@+id/textViewPrice" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#80000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCrossed"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCrossed"
+        app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+        app:layout_constraintTop_toTopOf="@+id/textViewCrossed" />
+
+    <ImageView
+        android:id="@+id/imageViewCOD"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImagesViewPager"
+        app:srcCompat="@drawable/cod" />
+
+    <TextView
+        android:id="@+id/textViewCOD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="12sp"
+        android:text="Available"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewCOD"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCOD" />
+
+    <LinearLayout
+        android:id="@+id/coupon_redemption_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:background="#F28820"
+        android:gravity="center"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPrice">
+
+        <TextView
+            android:id="@+id/txtCouponRedemption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="Check price after coupon redemption"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/coupon_redemption_btn"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="12dp"
+            android:layout_marginEnd="6dp"
+            android:textAllCaps="false"
+            android:background="@drawable/border_background"
+            android:text="Redeem"
+            android:layout_marginRight="6dp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
