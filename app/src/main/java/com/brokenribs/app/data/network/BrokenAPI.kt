@@ -42,7 +42,7 @@ interface BrokenAPI {
 
         operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): BrokenAPI {
             val  okHttpClient = OkHttpClient.Builder().addInterceptor(networkConnectionInterceptor).build()
-            val urlBase = "https://api.pexels.com/v1/"//"https://api.simplifiedcoding.in/course-apis/mvvm/"
+            val urlBase = "https://api.simplifiedcoding.in/course-apis/mvvm/"
             return  Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(urlBase)

@@ -8,18 +8,13 @@ import com.brokenribs.app.util.Coroutines
 import com.brokenribs.app.util.NoInternetException
 
 
-class LoginViewModel(
-
-    private val repository: UserRepository
-
-): ViewModel() {
+class LoginViewModel(private val repository: UserRepository): ViewModel() {
 
     var emailAddress: String? = null
     var password: String? = null
     var authListener: AuthListener? = null
 
     fun getLoggedInUser() = repository.getUser()
-
 
     fun onLoginClick(view: View){
         authListener?.onStarted()

@@ -1,7 +1,5 @@
 package com.brokenribs.app.ui.details
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,40 +14,25 @@ import kotlinx.android.synthetic.main.products_img_layout.*
 
 class DetailActivity : AppCompatActivity() {
 
-    private val pagerImages = ArrayList<String>()
-    private var ADDED_TO_WISHLIST: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_detail)
         setSupportActionBar(toolbar)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-//        pagerImages.add("https://images.pexels.com/photos/2847037/pexels-photo-2847037.jpeg")
-//        pagerImages.add("https://images.pexels.com/photos/2737022/pexels-photo-2737022.jpeg")
-//        pagerImages.add("https://images.pexels.com/photos/2977304/pexels-photo-2977304.jpeg")
-//        pagerImages.add("https://images.pexels.com/photos/2776911/pexels-photo-2776911.jpeg")
-
-        val images: Array<String> = ImagesUtils.getImageUrls.getImageUrls()
+        val uriSource = intent.getStringExtra("uriSource")
+        val title  = intent.getStringExtra("title")
+        textViewTitle.text = title
+        val images = ImagesUtils.getImages.scrollImages();
+        images.add(0, uriSource)
         val productImagesAdapter = ProductImagesAdapter(images.toMutableList())
         productImagesViewPager.adapter = productImagesAdapter
         view_pager_indicator.setupWithViewPager(productImagesViewPager, true)
 
-        floatingWishlist.setOnClickListener {
-            if (ADDED_TO_WISHLIST){
-                ADDED_TO_WISHLIST = false
-                floatingWishlist.supportBackgroundTintList = ColorStateList.valueOf(Color.parseColor("#9e9e9e"))
-            }else{
-                ADDED_TO_WISHLIST = true
-                //floatingWishlist.supportBackgroundTintList = ColorStateList(resources.getColorStateList(R.color.colorPrimary))
-            }
-        }
-
+        floatingWishlist.setOnClickListener { }
         viewPagerProductDetails.adapter = ProductDetailsAdapter(supportFragmentManager, tabLayoutProductDescription.tabCount)
-
-
         viewPagerProductDetails!!.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutProductDescription))
         tabLayoutProductDescription!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -66,16 +49,9 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        val id:Int = item.itemId
-        if (id == R.id.main_search_icon){
-            // todo search
-            return true
-        }else if (id == R.id.main_cart_icon){
-            // todo cart
-            return true
-        }
-
+        val id: Int = item.itemId
+        if (id == R.id.main_search_icon){ return true }
+        else if (id == R.id.main_cart_icon){ return true }
         return super.onOptionsItemSelected(item)
     }
 

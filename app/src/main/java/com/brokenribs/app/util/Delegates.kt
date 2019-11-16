@@ -1,5 +1,4 @@
 package com.brokenribs.app.util
-
 import kotlinx.coroutines.*
 
 fun<T> lazyDeferred(block: suspend CoroutineScope.() -> T): Lazy<Deferred<T>>{

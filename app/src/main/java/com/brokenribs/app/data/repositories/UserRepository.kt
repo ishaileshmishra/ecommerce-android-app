@@ -9,12 +9,7 @@ import com.brokenribs.app.data.network.reponse.AuthResponse
 import com.brokenribs.app.data.network.reponse.CuratedResponse
 import retrofit2.Response
 
-class UserRepository(
-
-    private val api: BrokenAPI,
-    private val db: AppDatabase
-
-) : SafeApiRequest() {
+class UserRepository(private val api: BrokenAPI, private val db: AppDatabase) : SafeApiRequest() {
 
     suspend fun userLogin(email: String, password: String): AuthResponse {
         return apiRequest { (api.userLogin(email, password))}

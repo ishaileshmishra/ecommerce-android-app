@@ -38,19 +38,19 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:tabGravity="fill"
-            android:contextClickable="true"
-            android:isScrollContainer="true"
-            android:tooltipText="Select Categories"
-            app:tabTextColor="@android:color/holo_orange_dark"
-            app:tabSelectedTextColor="@android:color/white"
-            android:background="@color/colorPrimaryDark"
-            android:elevation="15dp"
-            app:tabMode="scrollable" />
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/tabs"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:tabGravity="fill"-->
+<!--            android:contextClickable="true"-->
+<!--            android:isScrollContainer="true"-->
+<!--            android:tooltipText="Select Categories"-->
+<!--            app:tabTextColor="@android:color/holo_orange_dark"-->
+<!--            app:tabSelectedTextColor="@android:color/white"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            android:elevation="15dp"-->
+<!--            app:tabMode="scrollable" />-->
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"

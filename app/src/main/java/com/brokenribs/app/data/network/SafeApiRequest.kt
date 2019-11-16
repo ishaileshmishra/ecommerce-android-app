@@ -12,18 +12,12 @@ abstract class SafeApiRequest {
 
         val response = call.invoke()
 
-        if (response.isSuccessful) {
-
-            return response.body()!!
-
+        if (response.isSuccessful) { return response.body()!!
         } else {
-
             val error = response.errorBody()?.string()
             val message = StringBuilder()
-
             error?.let {
                 try {
-
                     message.append(JSONObject(it).getString("message"))
                 } catch (e: JSONException) { }
                     message.append("\n")

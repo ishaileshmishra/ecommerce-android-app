@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Brokenribs</string>
+    <string name="app_name">The Sage Restaurant</string>
     <string name="not_registered">Do Not Have Account?\nPlease SignUp</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="action_settings">Settings</string>
@@ -16,4 +16,8 @@ Mauris laoreet libero eu mollis fermentum.
 Nam tempor nulla laoreet, varius sapien et, fringilla odio.
 Integer hendrerit erat eget sapien ornare, eget pretium mi fermentum.
 Donec porttitor tortor sit amet turpis ullamcorper, ac consequat enim ornare.</string>
+    <string name="recommended">Recommended</string>
+    <string name="vegetarian_food">Vegetarian Food</string>
+    <string name="chinies_food">Chinies Food</string>
+    <string name="thai_food">Thai Food</string>
 </resources>

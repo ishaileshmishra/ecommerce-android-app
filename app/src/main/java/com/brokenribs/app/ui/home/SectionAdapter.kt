@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.section_item.view.*
 
-class SectionAdapter (private var items: Array<String> ) : RecyclerView.Adapter<SectionAdapter.ViewHolder>() {
+class SectionAdapter (private var items: MutableList<String> ) : RecyclerView.Adapter<SectionAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
@@ -40,7 +40,7 @@ class SectionAdapter (private var items: Array<String> ) : RecyclerView.Adapter<
         val tvSection = view.tvSection
     }
 
-    fun replaceItems(items: Array<String>) {
+    fun replaceItems(items: MutableList<String>) {
         this.items = items
         notifyDataSetChanged()
     }

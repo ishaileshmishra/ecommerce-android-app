@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupViewPager() {
 
         val adapter = HomeFragmentPagerAdapter(supportFragmentManager)
-        val container = listOf("Shop", "Imported chocolates", "Classic Watches", "Footwear", "Luxury wateches")
+        val container = listOf("Shop") //"Imported chocolates", "Classic Watches", "Footwear", "Luxury wateches")
         for (item in container) {
             val itemFrame: ContainerFragment = ContainerFragment.newInstance(item)
             adapter.addFragment(itemFrame, item)
@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         binding?.viewpager!!.adapter = adapter
-        binding!!.tabs!!.setupWithViewPager(binding!!.viewpager)
+        //binding!!.tabs!!.setupWithViewPager(binding!!.viewpager)
     }
 
 }

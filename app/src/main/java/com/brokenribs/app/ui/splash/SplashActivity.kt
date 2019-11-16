@@ -37,7 +37,6 @@ class SplashActivity : Activity() {
     }
 
     private fun checkUserLoggedIn(): Boolean {
-
         // check condition here.
         return false
     }

@@ -3,4 +3,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="img_page_height">250sp</dimen>
+    <dimen name="min_offer_page_height">180sp</dimen>
 </resources>
