@@ -23,8 +23,8 @@ class SplashActivity : Activity() {
         Handler().postDelayed(Runnable
         {
             if (!checkUserLoggedIn()){
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.putExtra("isLoggedIn", false)
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("isLoggedIn", true)
                 startActivity(intent)
                 finish()
             }else{
